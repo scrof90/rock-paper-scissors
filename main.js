@@ -1,4 +1,5 @@
-// computerPlay() returns 'Rock', 'Paper' or 'Scissors' with 33% probability each
+// computerPlay() returns 'Rock', 'Paper' or 'Scissors' with 33% 
+// probability each
 function computerPlay() {
   let computerSelection = Math.random();
 
@@ -12,13 +13,9 @@ function computerPlay() {
 
   return computerSelection;
 }
-console.log(computerPlay());
-console.log(computerPlay());
-console.log(computerPlay());
-console.log(computerPlay());
-console.log(computerPlay());
-console.log(computerPlay());
 
+// playRound(playerSelection, computerSelection) returns the result of a
+// round of "Rock, Paper, Scissors" between player and computer
 function playRound(playerSelection, computerSelection) {
     return;
 }
