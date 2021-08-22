@@ -1,4 +1,4 @@
-// computerPlay() returns either 'Rock', 'Paper' or 'Scissors' with 33%
+// computerPlay() returns 'Rock', 'Paper' or 'Scissors' with 33%
 // probability each
 function computerPlay() {
   let computer = Math.random();
@@ -8,28 +8,42 @@ function computerPlay() {
   return computer;
 }
 
+// playerPlay() prompts player to enter 'Rock', 'Paper' or 'Scissors' and
+// returns the choice if it's a valid input
+function playerPlay() {
+  while (true) {
+    const player = capitalizeFirstLetter(
+      prompt('Enter "Rock", "Paper" or "Scissors": ')
+    );
+
+    if (player == "Rock" || player == "Paper" || player == "Scissors") {
+      return player;
+    } else {
+      console.log("Invalid choice!");
+    }
+  }
+}
+
 // playRound() returns the result of a round of "Rock, Paper, Scissors"
 function playRound(playerSelection, computerSelection) {
-  const player = capitalizeFirstLetter(playerSelection);
-  const computer = computerSelection;
-
   let result;
 
-  if (player == computer) {
-    result = `It's a draw! You both chose ${player}`;
+  if (playerSelection == computerSelection) {
+    result = `It's a draw! You both chose ${playerSelection}`;
   } else if (
-    (player == "Rock" && computer == "Paper") ||
-    (player == "Paper" && computer == "Rock") ||
-    (player == "Scissors" && computer == "Paper")
+    (playerSelection == "Rock" && computerSelection == "Paper") ||
+    (playerSelection == "Paper" && computerSelection == "Rock") ||
+    (playerSelection == "Scissors" && computerSelection == "Paper")
   ) {
-    result = `You win! ${player} beats ${computer}`;
+    result = `You win! ${playerSelection} beats ${computerSelection}`;
   } else {
-    result = `You lose! ${computer} beats ${player}`;
+    result = `You lose! ${computerSelection} beats ${playerSelection}`;
   }
 
   return result;
 }
 
+// game() plays a game of 5 rounds and displays the results to console
 function game() {
   let wins = 0;
   let losses = 0;
@@ -37,9 +51,7 @@ function game() {
   for (round = 1; round <= 5; round++) {
     console.log(`Round ${round} of 5! Fight!`);
 
-    playerSelection = prompt('Enter "rock", "paper" or "scissors": ');
-    const computerSelection = computerPlay();
-    const roundResult = playRound(playerSelection, computerSelection);
+    const roundResult = playRound(playerPlay(), computerPlay());
 
     if (roundResult.includes("win")) {
       wins++;
@@ -58,6 +70,8 @@ function game() {
   console.log(gameResult);
 }
 
+// capitalizeFirstLetter() capitalizes first letter of a string and converts
+// the rest to lower case, then returns it
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
