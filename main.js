@@ -1,6 +1,6 @@
-// computerPlay() returns 'Rock', 'Paper' or 'Scissors' with 33%
+// getComputerPlay() returns 'Rock', 'Paper' or 'Scissors' with 33%
 // probability each
-function computerPlay() {
+function getComputerPlay() {
   let computer = Math.random();
 
   computer = computer < 0.33 ? "Rock" : computer > 0.66 ? "Paper" : "Scissors";
@@ -8,9 +8,9 @@ function computerPlay() {
   return computer;
 }
 
-// playerPlay() prompts player to enter 'Rock', 'Paper' or 'Scissors' and
+// getPlayerPlay() prompts player to enter 'Rock', 'Paper' or 'Scissors' and
 // returns the choice if it's a valid input
-function playerPlay() {
+function getPlayerPlay() {
   while (true) {
     const player = capitalizeFirstLetter(
       prompt('Enter "Rock", "Paper" or "Scissors": ')
@@ -51,7 +51,7 @@ function game() {
   for (round = 1; round <= 5; round++) {
     console.log(`Round ${round} of 5! Fight!`);
 
-    const roundResult = playRound(playerPlay(), computerPlay());
+    const roundResult = playRound(getPlayerPlay(), getComputerPlay());
 
     if (roundResult.includes("win")) {
       wins++;
