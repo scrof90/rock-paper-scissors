@@ -17,7 +17,7 @@ function getPlayerPlay() {
 
     if (!play) return getComputerPlay();
 
-    play = capFirst(play);
+    play = capFirst(player);
 
     if (play === "Rock" || play === "Paper" || play === "Scissors") {
       return play;
@@ -71,7 +71,7 @@ function game() {
 
 // capitalizes first letter of string and converts the rest to lower case,
 // then returns it
-function capFirst(string) {
+function capLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
